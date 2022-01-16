@@ -4,6 +4,7 @@ mod combobox;
 mod drag;
 mod editbox;
 mod group;
+mod hidden_button;
 mod input;
 mod label;
 mod popup;

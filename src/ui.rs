@@ -31,11 +31,15 @@ pub use crate::hash;
 
 pub(crate) use render::ElementState;
 
-use std::{borrow::Cow, ops::DerefMut};
+use std::{borrow::Cow, cell::RefMut, ops::DerefMut};
 
 /// Root UI. Widgets drawn with the root ui will be always presented at the end of the frame with a "default" camera.
 /// UI space would be a "default" screen space (0..screen_width(), 0..screen_height())
 pub fn root_ui() -> impl DerefMut<Target = Ui> {
+    crate::get_context().ui_context.ui.borrow_mut()
+}
+
+pub fn ui_root() -> RefMut<'static, Ui> {
     crate::get_context().ui_context.ui.borrow_mut()
 }
 
